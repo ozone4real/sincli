@@ -6,24 +6,23 @@ git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
 gem 'sinatra'
 gem 'activerecord'
-gem 'uglifier'
-# gem 'padrino-helpers'
 gem 'sinatra-activerecord'
+<% unless @options[:api_only] %>
 gem 'sprockets-helpers'
 gem 'sass', '~> 3.4', '>= 3.4.22'
-gem 'font-awesome-sass', '~> 5.11', '>= 5.11.2'
+gem 'uglifier'
+gem 'sinatra-flash'
+<% end %>
 gem 'rake'
 gem 'require_all'
-gem 'sinatra-flash'
 gem 'bcrypt'
-gem 'puma'
+gem '<%= @options[:server] %>'
 gem 'i18n'
 gem 'tux'
+gem '<%= @options[:db] %>'
 gem 'mysql2', '~> 0.5.2'
 gem 'sinatra-contrib', :require => 'sinatra/respond_with'
 gem 'actionview', :require => 'action_view/helpers'
-# gem 'chosen'
-# gem 'turbolinks', '~> 5.2.0
 
 group :development, :test do
   gem 'shotgun'
@@ -36,9 +35,5 @@ group :test do
   gem 'capybara'
   gem 'rack-test'
   gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
-end
-
-group :production do
-  gem 'pg'
 end
 

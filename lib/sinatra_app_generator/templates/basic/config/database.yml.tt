@@ -1,0 +1,18 @@
+<% name = @name.underscore %>
+default: &default
+  adapter: <%= @options[:adapter] %>
+
+development:
+  <<: *default
+  database: <%= name + "_development" %>
+  username: ""
+  password: ""
+
+test:
+  <<: *default
+  database: <%= name + "_test" %>
+  username: ""
+  password: ""
+
+production:
+  <<: *default
