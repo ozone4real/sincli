@@ -6,11 +6,12 @@ class Generators < Thor
   option :db, aliases: "d", default: "sqlite"
   option :api_only, default: false, type: :boolean
   option :server, aliases: "s", default: "thin"
+
   def new(app_name)
     Application.new(app_name, options.dup).create
   end
 
-  desc "generate COMPONENT NAME", "generates a sinatra component"
+  desc "generate COMPONENT_NAME", "generates a sinatra component"
 
   def generate(component, name)
   end

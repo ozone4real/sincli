@@ -11,6 +11,7 @@ class Generators
       @options = options
       @options[:server] = "thin" unless SERVER_NAMES.include? options[:server]
       self.destination_root = Dir.pwd
+      self.behavior = :invoke
     end
 
     def self.source_root

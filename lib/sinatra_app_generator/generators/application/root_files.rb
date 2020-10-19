@@ -8,12 +8,13 @@ class Generators
         gemfile
         rackup
         gitignore
+        rakefile
       end
 
       private
 
       def rackup
-        copy_file("basic/config.ru", "config.ru")
+        template("basic/config.ru.tt", "config.ru")
       end
 
       def gitignore
@@ -22,6 +23,10 @@ class Generators
 
       def gemfile
         template("basic/Gemfile.tt", "Gemfile", verbose: true)
+      end
+
+      def rakefile
+        copy_file("basic/Rakefile", "Rakefile")
       end
 
       def set_options

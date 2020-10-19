@@ -7,7 +7,7 @@ class Generators
       end
 
       def generate
-        template("layout.html.erb.tt", "app/views/layout.html.erb", verbose: true)
+        template("layout.erb.tt", "views/layout.erb", verbose: true)
       end
     end
   end

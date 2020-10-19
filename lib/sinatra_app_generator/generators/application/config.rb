@@ -6,6 +6,8 @@ class Generators
         Dir.mkdir("config")
         sec_key
         db_config
+        environment
+        puma_config
       end
 
       def self.source_root
@@ -31,10 +33,12 @@ class Generators
 
       def puma_config
         return unless @options[:server] == "puma"
+        copy_file("puma.rb", "config/puma.rb")
       end
 
       def environment
-        
+        copy_file("environment.rb", "config/environment.rb")
+        template("application.rb.tt", "config/application.rb")
       end
     end
   end

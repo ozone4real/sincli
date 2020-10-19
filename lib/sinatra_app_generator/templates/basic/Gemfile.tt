@@ -8,21 +8,19 @@ gem 'sinatra'
 gem 'activerecord'
 gem 'sinatra-activerecord'
 <% unless @options[:api_only] %>
+gem 'sprockets'
 gem 'sprockets-helpers'
 gem 'sass', '~> 3.4', '>= 3.4.22'
 gem 'uglifier'
 gem 'sinatra-flash'
+gem 'coffee-script'
 <% end %>
 gem 'rake'
 gem 'require_all'
 gem 'bcrypt'
 gem '<%= @options[:server] %>'
 gem 'i18n'
-gem 'tux'
 gem '<%= @options[:db] %>'
-gem 'mysql2', '~> 0.5.2'
-gem 'sinatra-contrib', :require => 'sinatra/respond_with'
-gem 'actionview', :require => 'action_view/helpers'
 
 group :development, :test do
   gem 'shotgun'
