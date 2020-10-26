@@ -8,7 +8,10 @@ class Generators
         db_config
         environment
         puma_config
+        locales
       end
+
+      private
 
       def self.source_root
         super.join("basic/config")
@@ -38,7 +41,12 @@ class Generators
 
       def environment
         copy_file("environment.rb", "config/environment.rb")
+        @extensions = extensions.map {|e| "Sinatra::#{e.camelize}" }
         template("application.rb.tt", "config/application.rb")
+      end
+
+      def locales
+        directory("locales", "config/locales")
       end
     end
   end

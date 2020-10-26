@@ -5,7 +5,7 @@ source "https://rubygems.org"
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
 gem 'sinatra'
-gem 'activerecord'
+gem 'activerecord', '5.2.3'
 gem 'sinatra-activerecord'
 <% unless @options[:api_only] %>
 gem 'sprockets'
@@ -15,16 +15,17 @@ gem 'uglifier'
 gem 'sinatra-flash'
 gem 'coffee-script'
 <% end %>
-gem 'rake'
+<% if @options[:api_only] %>
+gem 'rack-cors'
+<%end%>gem 'rake'
 gem 'require_all'
 gem 'bcrypt'
 gem '<%= @options[:server] %>'
 gem 'i18n'
 gem '<%= @options[:db] %>'
+gem 'sinatra-contrib', :require => <%= @contrib_extensions %>
 
 group :development, :test do
-  gem 'shotgun'
-  gem 'rerun'
   gem 'pry'
 end
 
@@ -32,6 +33,6 @@ group :test do
   gem 'rspec'
   gem 'capybara'
   gem 'rack-test'
-  gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
+  gem 'database_cleaner-active_record'
 end
 

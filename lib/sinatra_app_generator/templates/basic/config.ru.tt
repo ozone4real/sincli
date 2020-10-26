@@ -1,20 +1,33 @@
 require './config/environment'
 
-if ActiveRecord::MigrationContext.new('./db/migrate').needs_migration?
-  raise 'Migrations are pending. Run `rake db:migrate` to resolve the issue.'
+class MigrationCheck
+  def initialize(app)
+    @app = app
+  end
+
+  def call(env)
+    if ActiveRecord::MigrationContext.new('./db/migrate').needs_migration?
+      raise ActiveRecord::PendingMigrationError.new 'Migrations are pending. Run `rake db:migrate` to resolve the issue.'
+    end
+    @app.call(env)
+  end
 end
-
-config_path = Pathname.new("config/application.rb")
-
-f = config_path.read
-
-ApplicationController.class_eval(f, config_path.to_s)
 
 <% unless @options[:api_only] %>
+# Assets pipeline
 map ApplicationController.assets_prefix do
-  run ApplicationController.environment
+  run ApplicationController.sprockets
 end
 <% end %>
-
+<% if @options[:api_only] %>
+# Handle Cross-Origin Resource Sharing (CORS) in order to accept cross-origin AJAX requests.
+# Read more: https://github.com/cyu/rack-cors
+use Rack::Cors do
+  allow do
+    origins '*'
+    resource '*', headers: :any, methods: [:get, :post, :patch, :put]
+  end
+end
+<% end %>
 run ApplicationController
 ApplicationController.subclasses.each {|klass| use klass }

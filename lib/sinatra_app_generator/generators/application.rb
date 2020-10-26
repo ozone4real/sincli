@@ -27,7 +27,7 @@ class Generators
     end
 
     def create_root_dir
-      dir_name = @name.parameterize
+      dir_name = @name.dash_case
       dir = Dir.mkdir(dir_name)
       Dir.chdir(dir_name)
     end

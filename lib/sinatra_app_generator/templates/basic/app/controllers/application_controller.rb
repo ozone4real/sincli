@@ -1,6 +1,7 @@
 class ApplicationController < Sinatra::Base
+  include Configuration
   get '/' do
-    "<h1>Hello World</h1>"
+    erb { "Hello World" }
   end
 
   # methods that you want to be available in the views and controllers

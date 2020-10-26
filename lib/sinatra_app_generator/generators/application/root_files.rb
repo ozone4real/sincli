@@ -22,6 +22,7 @@ class Generators
       end
 
       def gemfile
+        @contrib_extensions = contrib_extensions.map {|e| "sinatra/#{e}" }
         template("basic/Gemfile.tt", "Gemfile", verbose: true)
       end
 
