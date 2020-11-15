@@ -5,6 +5,7 @@ module Sincli
       def initialize(name, options)
         @name = name
         @options = options
+        @options.delete(:db) if @options[:no_database]
       end
 
       def create
@@ -18,6 +19,8 @@ module Sincli
         Dir.chdir("..")
         Executions.new(@name, @options).execute
       end
+
+      private
 
       def create_root_files
         RootFiles.new(@name, @options).generate

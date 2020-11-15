@@ -7,7 +7,7 @@ module Sincli
       end
 
       def generate
-        directory("models")
+        directory("models") if @options[:db]
         directory("controllers")
       end
     end

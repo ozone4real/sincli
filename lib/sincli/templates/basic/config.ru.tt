@@ -1,5 +1,5 @@
 require './config/environment'
-
+<% if @options[:db] %>
 class MigrationCheck
   def initialize(app)
     @app = app
@@ -12,7 +12,7 @@ class MigrationCheck
     @app.call(env)
   end
 end
-
+<% end %>
 <% unless @options[:api_only] %>
 # Assets pipeline
 map ApplicationController.assets_prefix do
@@ -30,4 +30,7 @@ use Rack::Cors do
 end
 <% end %>
 run ApplicationController
+<% if @options[:db] %>
+use MigrationCheck
+<% end %>
 ApplicationController.subclasses.each {|klass| use klass }

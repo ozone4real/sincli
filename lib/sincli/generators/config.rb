@@ -29,7 +29,7 @@ module Sincli
       end
 
       def db_config
-        db = @options[:db]
+        return unless db = @options[:db]
         @options[:adapter] = db == "pg" ? "postgresql" : db 
         template("database.yml.tt", "config/database.yml")
       end

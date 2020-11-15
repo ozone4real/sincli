@@ -5,15 +5,20 @@ source "https://rubygems.org"
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
 gem 'sinatra'
-gem 'activerecord', '5.2.3'
-gem 'sinatra-activerecord'
+<% if @options[:db] %>
+gem 'activerecord', '~> 5.2.3'
+gem 'sinatra-activerecord', '~> 2.0.1'
+gem '<%= @options[:db] %>'
+<% else %>
+gem 'activesupport', '~> 5.2.3', require: 'active_support/all'
+<% end %>
 <% unless @options[:api_only] %>
 gem 'sprockets', '~> 3.7'
-gem 'sprockets-helpers'
+gem 'sprockets-helpers', '~> 1.4.0'
 gem 'sass', '~> 3.4', '>= 3.4.22'
-gem 'uglifier'
-gem 'sinatra-flash'
-gem 'coffee-script'
+gem 'uglifier', '~> 4.2.0'
+gem 'sinatra-flash', '~> 0.3.0'
+gem 'coffee-script', '~> 2.4.0'
 <% end %>
 <% if @options[:api_only] %>
 gem 'rack-cors'
@@ -21,9 +26,10 @@ gem 'rack-cors'
 gem 'require_all'
 gem 'bcrypt'
 gem '<%= @options[:server] %>'
-gem 'i18n'
-gem '<%= @options[:db] %>'
+gem 'i18n', '~> 1.8.0'
+<% unless @options[:no_contrib] %>
 gem 'sinatra-contrib', :require => <%= @contrib_extensions %>
+<% end %>
 
 group :development, :test do
   gem 'pry'
@@ -31,7 +37,8 @@ end
 
 group :test do
   gem 'rspec'
-  gem 'rack-test'
-  gem 'database_cleaner-active_record'
+  gem 'rack-test'<% if @options[:db] %>
+  gem 'database_cleaner-active_record', "~> 1.8.0"
+  <% end %>
 end
 

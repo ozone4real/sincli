@@ -31,6 +31,7 @@ module Sincli
       end
 
       def set_options
+        return unless @options[:db]
         @options[:db] = case @options[:db]
                         when "mysql"
                           "mysql2"

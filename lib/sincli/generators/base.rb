@@ -5,12 +5,9 @@ module Sincli
     class Base < Thor::Group
       include Thor::Actions
 
-      SERVER_NAMES = %w(puma thin falcon webrick)
-
       def initialize(name, options)
         @name = name
         @options = options
-        @options[:server] = "thin" unless SERVER_NAMES.include? options[:server]
         self.destination_root = Dir.pwd
         self.behavior = :invoke
       end
@@ -25,6 +22,7 @@ module Sincli
       end
 
       def contrib_extensions
+        return [] if @options[:no_contrib]
         ['reloader', 'required_params'].tap do |e|
           if @options[:api_only]
             e.push 'json'
