@@ -1,6 +1,6 @@
-RSpec.describe SinatraAppGenerator do
+RSpec.describe Sincli do
   it "has a version number" do
-    expect(SinatraAppGenerator::VERSION).not_to be nil
+    expect(Sincli::VERSION).not_to be nil
   end
 
   it "does something useful" do

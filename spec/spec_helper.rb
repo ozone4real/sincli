@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "sinatra_app_generator"
+require "sincli"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

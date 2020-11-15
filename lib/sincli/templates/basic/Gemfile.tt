@@ -8,7 +8,7 @@ gem 'sinatra'
 gem 'activerecord', '5.2.3'
 gem 'sinatra-activerecord'
 <% unless @options[:api_only] %>
-gem 'sprockets'
+gem 'sprockets', '~> 3.7'
 gem 'sprockets-helpers'
 gem 'sass', '~> 3.4', '>= 3.4.22'
 gem 'uglifier'
@@ -31,7 +31,6 @@ end
 
 group :test do
   gem 'rspec'
-  gem 'capybara'
   gem 'rack-test'
   gem 'database_cleaner-active_record'
 end

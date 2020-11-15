@@ -1,7 +1,3 @@
-require "thor"
-require "active_support/core_ext/string"
-require_relative "./utils/string.rb"
-
 class Generators < Thor
   desc "new APP_NAME", "bootstraps a new sinatra application with default configurations"
   option :db, aliases: "d", default: "sqlite"
