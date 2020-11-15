@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["ezenwaogbonna1@gmail.com"]
 
   spec.summary       = %q{Sinatra Cli}
-  spec.description   = %q{CLI for initializing a new modular Sinatra applicationw ith default configurations. The application is setup with a structure that is similar to Rails}
+  spec.description   = %q{CLI for initializing a new modular Sinatra application ith default configurations. The application is setup with a structure that is similar to Rails}
   spec.homepage      = "https://github.com/ozone4real/sincli"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.4.0")

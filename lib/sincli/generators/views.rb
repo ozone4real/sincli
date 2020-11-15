@@ -1,7 +1,6 @@
-class Generators
-  class Application
+module Sincli
+  module Generators
     class Views < Base
-
       def self.source_root
         super.join("basic/app/views")
       end

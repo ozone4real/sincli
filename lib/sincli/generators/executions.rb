@@ -1,7 +1,5 @@
-require "byebug"
-
-class Generators
-  class Application
+module Sincli
+  module Generators
     class Executions < Base
       def execute
         run("git init")

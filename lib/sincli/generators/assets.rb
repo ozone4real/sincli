@@ -1,5 +1,5 @@
-class Generators
-  class Application
+module Sincli
+  module Generators
     class Assets < Base
 
       def self.source_root
