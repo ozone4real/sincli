@@ -1,3 +1,6 @@
+require 'coveralls'
+Coveralls.wear!
+
 require 'bundler/setup'
 Bundler.require(:default, :development)
 require './lib/sincli'

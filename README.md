@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/ozone4real/sincli.svg?branch=master)](https://travis-ci.com/ozone4real/sincli)
+[![Build Status](https://travis-ci.com/ozone4real/sincli.svg?branch=master)](https://travis-ci.com/ozone4real/sincli) [![Coverage Status](https://coveralls.io/repos/github/ozone4real/sincli/badge.svg?branch=master)](https://coveralls.io/github/ozone4real/sincli?branch=master)
 # Sincli
 
 Command line tool for initializing a new modular Sinatra application with default configurations. This includes the basic things that are needed to build any kind of application with Sinatra. The application is setup with a structure that is similar to Rails. The goal of this project is to help reduce the time spent in setting up and configuring your new Sinatra application.
