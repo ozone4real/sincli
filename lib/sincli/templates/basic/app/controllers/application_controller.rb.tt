@@ -1,7 +1,11 @@
 class ApplicationController < Sinatra::Base
   include Configuration
-  get '/' do
+
+  get '/' do <% if @options[:api_only] %><% unless @options[:no_contrib] %>
+    json({ message: "Hello World" })
+    <% end %><% else %>
     erb "Hello World"
+    <% end %>
   end
 
   # methods that you want to be available in the views and controllers

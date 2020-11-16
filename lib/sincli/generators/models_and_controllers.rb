@@ -8,7 +8,8 @@ module Sincli
 
       def generate
         directory("models") if @options[:db]
-        directory("controllers")
+        empty_directory("controllers")
+        template("controllers/application_controller.rb.tt", "controllers/application_controller.rb")
       end
     end
   end

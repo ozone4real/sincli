@@ -41,7 +41,10 @@ module Sincli
 
       def environment
         copy_file("environment.rb", "config/environment.rb")
-        @extensions = extensions.map {|e| "Sinatra::#{e.camelize}" }
+        @extensions = extensions.map do |e| 
+          ext = e == "json" ? e.upcase : e.camelize
+          "Sinatra::#{ext}"
+        end
         template("application.rb.tt", "config/application.rb")
       end
 
