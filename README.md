@@ -1,28 +1,38 @@
+[![Build Status](https://travis-ci.com/ozone4real/sincli.svg?branch=master)](https://travis-ci.com/ozone4real/sincli)
 # Sincli
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/sincli`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Command line tool for initializing a new modular Sinatra application with default configurations. This includes the basic things that are needed to build any kind of application with Sinatra. The application is setup with a structure that is similar to Rails. The goal of this project is to help reduce the time spent in setting up and configuring your new Sinatra application.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'sincli'
-```
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
+Run this on your command line:
 
     $ gem install sincli
 
 ## Usage
 
-TODO: Write usage instructions here
+Initialize a new Sinatra application:
+
+```
+$ sincli new "APP_NAME"
+```
+
+To view the list of available options run:
+
+```
+$ sincli help new
+```
+
+## Some of the configurations set up
+
+- Rack
+- Assets Pipeline (with Sprockets)
+- Puma (if 'puma' is passed as the server option)
+- RSpec
+- Sinatra extensions
+- Internationalization (with 1i8n)
+- Database
+- CORS (if the --api-only flag is passed)
 
 ## Development
 
@@ -32,7 +42,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/sincli. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/sincli/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/ozone4real/sincli. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/ozone4real/sincli/blob/master/CODE_OF_CONDUCT.md).
 
 ## License
 
@@ -40,4 +50,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Sincli project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/sincli/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Sincli project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/ozone4reak/sincli/blob/master/CODE_OF_CONDUCT.md).
