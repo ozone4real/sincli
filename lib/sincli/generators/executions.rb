@@ -24,7 +24,8 @@ module Sincli
             \  def app
                 ApplicationController
             \  end
-            \  config.include Rack::Test::Methods #{dbcleaner_config}
+            \  config.include Rack::Test::Methods
+            \  #{dbcleaner_config}
           RUBY
         end
       end
@@ -33,16 +34,16 @@ module Sincli
         return if options[:no_database]
 
         <<~RUBY
-          \   config.before(:suite) do
-          \     DatabaseCleaner.strategy = :transaction
-          \     DatabaseCleaner.clean_with(:truncation)
-          \   end
+          \  config.before(:suite) do
+          \    DatabaseCleaner.strategy = :transaction
+          \    DatabaseCleaner.clean_with(:truncation)
+          \  end
 
-          \   config.around(:each) do |example|
-          \     DatabaseCleaner.cleaning do
-          \       example.run
-          \     end
-          \   end
+          \  config.around(:each) do |example|
+          \    DatabaseCleaner.cleaning do
+          \      example.run
+          \    end
+          \  end
         RUBY
       end
     end
