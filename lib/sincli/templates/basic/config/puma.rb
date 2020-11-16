@@ -4,22 +4,22 @@
 # the maximum value specified for Puma. Default is set to 5 threads for minimum
 # and maximum; this matches the default thread size of Active Record.
 #
-threads_count = ENV.fetch("SINATRA_MAX_THREADS") { 5 }
+threads_count = ENV.fetch('SINATRA_MAX_THREADS') { 5 }
 threads threads_count, threads_count
 
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
 #
-port ENV.fetch("PORT") { 3000 }
+port ENV.fetch('PORT') { 3000 }
 
 # Specifies the `environment` that Puma will run in.
 #
-environment ENV.fetch("SINATRA_ENV") { "development" }
+environment ENV.fetch('SINATRA_ENV') { 'development' }
 
 # Specifies the `pidfile` that Puma will use.
-pidfile ENV.fetch("PIDFILE") { 
-  path = "tmp/pids"
+pidfile ENV.fetch('PIDFILE') {
+  path = 'tmp/pids'
   FileUtils.mkdir_p(path) unless Dir.exist? path
-  path + "/server.pid"
+  path + '/server.pid'
 }
 
 # Specifies the number of `workers` to boot in clustered mode.

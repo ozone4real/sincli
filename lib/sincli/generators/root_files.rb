@@ -14,31 +14,32 @@ module Sincli
       private
 
       def rackup
-        template("basic/config.ru.tt", "config.ru")
+        template('basic/config.ru.tt', 'config.ru')
       end
 
       def gitignore
-        copy_file("basic/.gitignore", ".gitignore")
+        copy_file('basic/.gitignore', '.gitignore')
       end
 
       def gemfile
-        @contrib_extensions = contrib_extensions.map {|e| "sinatra/#{e}" }
-        template("basic/Gemfile.tt", "Gemfile", verbose: true)
+        @contrib_extensions = contrib_extensions.map { |e| "sinatra/#{e}" }
+        template('basic/Gemfile.tt', 'Gemfile', verbose: true)
       end
 
       def rakefile
-        copy_file("basic/Rakefile", "Rakefile")
+        copy_file('basic/Rakefile', 'Rakefile')
       end
 
       def set_options
         return unless @options[:db]
+
         @options[:db] = case @options[:db]
-                        when "mysql"
-                          "mysql2"
+                        when 'mysql'
+                          'mysql2'
                         when /^postgres|pg/
-                          "pg"
+                          'pg'
                         when /^sqlite/
-                          "sqlite3"
+                          'sqlite3'
                         end
       end
     end

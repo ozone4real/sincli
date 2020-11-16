@@ -1,9 +1,10 @@
-require "pathname"
+require 'pathname'
 
 module Sincli
   module Generators
     class Base < Thor::Group
       include Thor::Actions
+      attr_reader :options, :name
 
       def initialize(name, options)
         @name = name
@@ -12,18 +13,16 @@ module Sincli
         self.behavior = :invoke
       end
 
-      def self.source_root
-        f = File.expand_path("../templates", __dir__)
-        Pathname.new f
-      end
+      private
 
       def git_keep
-        create_file(".", ".gitkeep")
+        create_file('.', '.gitkeep')
       end
 
       def contrib_extensions
-        return [] if @options[:no_contrib]
-        ['reloader', 'required_params'].tap do |e|
+        return [] if options[:no_contrib]
+
+        %w[reloader required_params].tap do |e|
           if @options[:api_only]
             e.push 'json'
           else
@@ -33,8 +32,14 @@ module Sincli
       end
 
       def extensions
-        return contrib_extensions if @options[:api_only]
+        return contrib_extensions if options[:api_only]
+
         contrib_extensions + ['flash']
+      end
+
+      def self.source_root
+        f = File.expand_path('../templates', __dir__)
+        Pathname.new f
       end
     end
   end
