@@ -19,8 +19,8 @@ module Sincli
         end
 
         it 'should setup rspec' do
-          allow(subject).to receive(:insert_into_file).with('spec/spec_helper.rb', before: "RSpec.configure do |config|\n")
-          allow(subject).to receive(:insert_into_file).with('spec/spec_helper.rb', after: "RSpec.configure do |config|\n")
+          expect(subject).to receive(:insert_into_file).with('spec/spec_helper.rb', before: "RSpec.configure do |config|\n")
+          expect(subject).to receive(:insert_into_file).with('spec/spec_helper.rb', after: "RSpec.configure do |config|\n")
           subject.execute
         end
       end
